@@ -26,10 +26,10 @@ package name: (react-ts-demo)
 
 ```text
 + public
-	index.html
+ index.html
 
 + src
-	*.js
+ *.js
 
 - app.js
 
@@ -53,8 +53,6 @@ package name: (react-ts-demo)
 
 ```
 
-
-
 ### webpack.config.js初始配置
 
 ```js
@@ -75,8 +73,6 @@ module.exports = {
 
 ### React安装以及编写文件
 
-
-
 ### 管理输出
 
 webapck文件如下
@@ -95,9 +91,9 @@ webpack文件如下
 
 两者区别
 
-Webpack HMR 和 React-Hot-Loader - 高山景行的文章 - 知乎 https://zhuanlan.zhihu.com/p/30135527
+Webpack HMR 和 React-Hot-Loader - 高山景行的文章 - 知乎 <https://zhuanlan.zhihu.com/p/30135527>
 
-###  webpack配置
+### webpack配置
 
 - webpack.config.js 配置
 - JS 写法
@@ -126,13 +122,13 @@ Webpack HMR 和 React-Hot-Loader - 高山景行的文章 - 知乎 https://zhuanl
 
   ```js
   module.exports = env => {
-  	console.log(env.NODEMODE) // prd
+   console.log(env.NODEMODE) // prd
   }
   ```
 
 ### 运行时获取
 
-使用webpack自带插件 DefinePlugin 
+使用webpack自带插件 DefinePlugin
 
 - webpack.config.js 配置
 
@@ -181,12 +177,10 @@ Webpack HMR 和 React-Hot-Loader - 高山景行的文章 - 知乎 https://zhuanl
 
     后面的model 是不同类型，还需处理webpack.config.js 文件
 
-    - 建立`env`文件夹，下面有文件夹 `index/prd/dev`
-    - 利用·`model` 读取文件
-    - 然后在`DefinePlugin` 插件使用
-    - 需要注意的是 如果直接使用，会导致直接转为引用变量，所以需要用 `JSON.stringify(exportENV(env.model))`, [ 参考阅读](https://zhuanlan.zhihu.com/p/133443240)
-
-    
+  - 建立`env`文件夹，下面有文件夹 `index/prd/dev`
+  - 利用·`model` 读取文件
+  - 然后在`DefinePlugin` 插件使用
+  - 需要注意的是 如果直接使用，会导致直接转为引用变量，所以需要用 `JSON.stringify(exportENV(env.model))`, [参考阅读](https://zhuanlan.zhihu.com/p/133443240)
 
     ```js
     const exportENV = (env) => {
@@ -205,9 +199,7 @@ Webpack HMR 和 React-Hot-Loader - 高山景行的文章 - 知乎 https://zhuanl
     
     ```
 
-    
-
-##  css资源加载处理
+## css资源加载处理
 
 > css资源加载包括，css-modules的命名处理方案解决 以及 预处理less 和 sass 的处理
 
@@ -231,8 +223,6 @@ yarn add style-loader css-loader -D
       ]
     },
 ```
-
-
 
 ### 进一步解决问题
 
@@ -270,7 +260,7 @@ yarn add style-loader css-loader -D
   import './index.css'
   
   const index = () => {
-  	return <div className="app"></div>
+   return <div className="app"></div>
   }
   
   // 启用modules之后
@@ -278,12 +268,10 @@ yarn add style-loader css-loader -D
   import styles from './index.css'
   
   const index = () => {
-  	return <div className={stles.app}></div>
+   return <div className={stles.app}></div>
   }
   
   ```
-
-  
 
 #### 使用预处理less
 
@@ -337,7 +325,7 @@ yarn add style-loader css-loader -D
             ...,
             module: {
                 rules: {
-    			...,
+       ...,
                 {
                   test: /\.(c|le)ss$/i,
                   use: [
@@ -364,15 +352,13 @@ yarn add style-loader css-loader -D
   
     ![image-20210615225132799](C:\Users\7\AppData\Roaming\Typora\typora-user-images\image-20210615225132799.png)
 
-
-
 ![image-20210615225154660](C:\Users\7\AppData\Roaming\Typora\typora-user-images\image-20210615225154660.png)
 
-​				但是资源中是有css文件的，接下来继续看文档找一下答案 ，答案地址 https://webpack.docschina.org/plugins/mini-css-extract-plugin/#modules
+​    但是资源中是有css文件的，接下来继续看文档找一下答案 ，答案地址 <https://webpack.docschina.org/plugins/mini-css-extract-plugin/#modules>
 
 > *i 不要同时使用* `style-loader` *与* `mini-css-extract-plugin`*。*
 
-​	下面是解决方案
+​ 下面是解决方案
 
 ```js
 // 命令行处理
@@ -386,10 +372,10 @@ module.exports = (env, args) => {
 const cssTypeDev = args.css === 'dev';
 
  return {
-	...,
+ ...,
      module: {
-     	rules: {
-     		...,
+      rules: {
+       ...,
             {
               test: /\.(c|le)ss$/i,
               use: [
@@ -440,7 +426,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 // 导出配置
 module.exports = (env, args) => {
-	return {
+ return {
         ...,
         optimization: {
           minimize: true, // 允许优化
@@ -452,9 +438,7 @@ module.exports = (env, args) => {
 }
 ```
 
-
-
-##  图片资源处理
+## 图片资源处理
 
 ### 安装依赖
 
@@ -467,7 +451,7 @@ yarn add file-loader -D
 ```js
 // 导出配置
 module.exports = (env, args) => {
-	return {
+ return {
         ...,
         module: {
           rules: [ // 配置加载器
@@ -485,19 +469,17 @@ module.exports = (env, args) => {
 }
 ```
 
-
-
 ## 集成ESLINT
 
 > 默认vscode已经安装eslint依赖，并且开启
 >
 > // 每次保存的时候将代码按eslint格式进行修复*
 >
->   "editor.codeActionsOnSave": {
+> "editor.codeActionsOnSave": {
 >
 > ​    "source.fixAll": true
 >
->   }
+> }
 
 ### 安装依赖
 
@@ -507,7 +489,7 @@ yarn add eslint babel-eslint eslint-plugin-import eslint-config-ali  -D
 
 ### 文件配置
 
-- 新建文件 `.eslintrc `
+- 新建文件 `.eslintrc`
 
   ```yaml
   {
@@ -555,8 +537,6 @@ yarn add eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-jsx-a11y -D
     }
 }
 ```
-
-
 
 ## 集成TS
 
@@ -609,8 +589,6 @@ module.exports = (env, args) => {
   }
 }
 ```
-
-
 
 全部react文件更名为TSX 原因是tsx语义更强
 
@@ -669,8 +647,3 @@ declare var GLOBAL_ENV: string;
 declare var module: any;
 
 ```
-
-
-
-
-

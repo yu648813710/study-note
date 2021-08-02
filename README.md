@@ -28,6 +28,6 @@
 
 - [关于魔术字符串在项目中怎么解耦](./关于魔术字符串在项目中怎么解耦.md)
 
-## 从 0 搭建一个 react 工程项目
+## React+TS webpack配置步骤.md
 
-- [从 0 搭建一个 react 工程项目](./从0搭建一个react工程项目.md)
+- [从 0 搭建一个 react 工程项目](./React+TS-webpack配置步骤.md)
